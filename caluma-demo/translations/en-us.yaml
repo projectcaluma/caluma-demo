@@ -1,0 +1,22 @@
+caluma:
+  form-builder:
+    global:
+      optional: optional
+      save: Save
+    question:
+      widgetOverrides:
+        powerselect: Powerselect
+    form:
+      all: All petitions
+      new: New petition 
+      empty: You dont' have any petitions yet.
+      name: Name
+      slug: Slug
+      description: Description
+      isArchived: Archived
+      isPublished: Published
+    notification:
+      form:
+        create:
+          error: Error
+
