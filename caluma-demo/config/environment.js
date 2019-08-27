@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'caluma-demo',
+    modulePrefix: "caluma-demo",
     environment,
-    rootURL: '/',
-    locationType: 'auto',
+    rootURL: "/",
+    locationType: "auto",
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -23,10 +23,10 @@ module.exports = function(environment) {
     },
     apollo: {
       apiURL: "/graphql"
-    },
+    }
   };
 
-  if (environment === 'development') {
+  if (environment === "development") {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -34,19 +34,19 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
-  if (environment === 'test') {
+  if (environment === "test") {
     // Testem prefers this...
-    ENV.locationType = 'none';
+    ENV.locationType = "none";
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
-    ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.rootElement = "#ember-testing";
     ENV.APP.autoboot = false;
   }
 
-  if (environment === 'production') {
+  if (environment === "production") {
     // here you can enable a production-specific feature
   }
 
