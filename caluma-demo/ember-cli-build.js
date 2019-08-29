@@ -10,6 +10,9 @@ module.exports = function(defaults) {
         group: null,
         pos: "top-center"
       }
+    },
+    "ember-caluma": {
+      includeMirageConfig: false
     }
   });
 

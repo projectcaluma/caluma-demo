@@ -11,7 +11,8 @@ Router.map(function() {
     as: "form-builder",
     path: "/form-builder"
   });
-  this.route("about");
+  this.route("show-forms");
+  this.route("home");
 });
 
 export default Router;
