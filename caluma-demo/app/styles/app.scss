@@ -1,0 +1,12 @@
+$global-primary-background: #3799ad;
+
+$global-font-family: "Ubuntu", Helvetica, Arial, sans-serif;
+$base-code-font-family: "Ubuntu Mono", monospace;
+
+$base-body-font-weight: 300;
+$base-heading-font-weight: 300;
+
+$modal-z-index: 1;
+@import "ember-uikit";
+@import "ember-caluma";
+@import "ember-power-select";
