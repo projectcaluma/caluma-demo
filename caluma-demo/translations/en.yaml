@@ -1,0 +1,7 @@
+nav:
+  home: Home
+  form-builder: Form-Builder
+  show-forms: Show forms
+home:
+  welcome: Welcome to the Caluma-Demo
+  introduction: On this page you can try Caluma. You can create forms, fill them out and view them directly.
