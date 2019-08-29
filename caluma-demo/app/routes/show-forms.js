@@ -3,8 +3,8 @@ import { queryManager } from "ember-apollo-client";
 import gql from "graphql-tag";
 import { decodeId } from "ember-caluma/helpers/decode-id";
 
-export default Route.extend({
-  apollo: queryManager(),
+export default class ShowFormsRoute extends Route {
+  @queryManager apollo;
 
   async model() {
     const documents = await this.apollo.query(
@@ -48,4 +48,4 @@ export default Route.extend({
 
     return decodeId(documents[0].node.id);
   }
-});
+}
