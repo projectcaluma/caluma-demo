@@ -1,10 +1,12 @@
 import { inject as service } from "@ember/service";
 import Route from "@ember/routing/route";
 
-export default Route.extend({
-  intl: service(),
+export default class ApplicationRoute extends Route {
+  @service intl;
+
   beforeModel() {
-    this._super(...arguments);
+    super.beforeModel(...arguments);
+
     return this.intl.setLocale("en");
   }
-});
+}
