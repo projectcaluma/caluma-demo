@@ -17,16 +17,25 @@
         <th>
           {{t "documents.description" }}
         </th>
+        <th>
+          {{t "documents.state" }}
+        </th>
       </tr>
     </thead>
     {{#each this.model as |document|}}
       <tbody>
         <tr>
-          <td>
+          <td class="uk-text-truncate">
             <LinkTo @route="documents.edit" @model={{decode-id document.node.id}}>{{document.node.form.name}}</LinkTo>
           </td>
-          <td>
+          <td class="uk-text-break uk-width-expand">
             <p>{{document.node.form.description}}</p>
+          </td>
+          <td class="uk-text-nowrap">
+            <p>
+              {{format-date document.node.form.createdAt timeZone="UTC"}},
+              {{format-date document.node.form.createdAt hour="numeric" minute="numeric" second="numeric"}}
+            </p>
           </td>
         </tr>
       </tbody>

@@ -2,12 +2,15 @@ nav:
   home: Home
   form-builder: Form-Builder
   show-forms: Show forms
+  icon: Caluma icon
 home:
   welcome: Welcome to the Caluma-Demo
   introduction: On this page you can try Caluma. You can create forms, fill them out and view them directly.
+  logo: Caluma logo
 forms:
   new: Fill in new form
   create: Create new
 documents:
   form: Form
   description: Description
+  state: State

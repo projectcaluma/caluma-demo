@@ -17,6 +17,7 @@ export default class DocumentsRoute extends Route {
                   form {
                     name
                     description
+                    createdAt
                   }
                 }
               }
