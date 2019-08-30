@@ -1,0 +1,35 @@
+{{#link-to "documents.new"}}
+  {{#uk-button
+    color="primary"
+    size="large"
+    fill=true
+  }}
+    {{t "forms.new"}}
+  {{/uk-button}}
+{{/link-to}}
+{{#if model}}
+  <table class="uk-table uk-table-hover">
+    <thead>
+      <tr>
+        <th>
+          {{t "documents.form" }}
+        </th>
+        <th>
+          {{t "documents.description" }}
+        </th>
+      </tr>
+    </thead>
+    {{#each model as |document|}}
+      <tbody>
+        <tr>
+          <td>
+            <LinkTo @route="documents.edit" @model={{decode-id document.node.id}}>{{document.node.form.name}}</LinkTo>
+          </td>
+          <td>
+            <p>{{document.node.form.description}}</p>
+          </td>
+        </tr>
+      </tbody>
+    {{/each}}
+  </table>
+{{/if}}

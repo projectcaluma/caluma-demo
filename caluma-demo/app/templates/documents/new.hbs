@@ -1,0 +1,17 @@
+{{#if this.model}}
+  {{#uk-flex direction="row" horizontal="center"}}
+    {{#each this.model as |form|}}
+      {{#uk-card color="default" vertical="stretch" wrap="wrap" wrapAlignment="between" class="uk-margin-left" size="large" as |card|}}
+        {{#card.header}}
+          {{#card.title}}{{form.node.name}}{{/card.title}}
+        {{/card.header}}
+        {{#card.body}}
+          {{form.node.description}}
+        {{/card.body}}
+        {{#card.footer}}
+          <button class="uk-button uk-button-primary" {{action "createDocument" form.node.id}}>{{t "forms.create" }}</button>
+        {{/card.footer}}
+      {{/uk-card}}
+    {{/each}}
+  {{/uk-flex}}
+{{/if}}
