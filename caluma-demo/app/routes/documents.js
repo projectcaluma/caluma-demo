@@ -6,7 +6,7 @@ export default class DocumentsRoute extends Route {
   @queryManager apollo;
 
   async model() {
-    const documents = await this.apollo.query(
+    return await this.apollo.query(
       {
         query: gql`
           query {
@@ -26,6 +26,5 @@ export default class DocumentsRoute extends Route {
       },
       "allDocuments.edges"
     );
-    return documents;
   }
 }
