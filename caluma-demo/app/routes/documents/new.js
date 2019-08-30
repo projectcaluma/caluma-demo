@@ -8,7 +8,7 @@ export default class DocumentsNewRoute extends Route {
   @queryManager apollo;
 
   async model() {
-    const forms = await this.apollo.query(
+    return await this.apollo.query(
       {
         query: gql`
           query {
@@ -27,7 +27,6 @@ export default class DocumentsNewRoute extends Route {
       },
       "allForms.edges"
     );
-    return forms;
   }
 
   @action
