@@ -11,8 +11,11 @@ Router.map(function() {
     as: "form-builder",
     path: "/form-builder"
   });
-  this.route("show-forms");
   this.route("home");
+  this.route("documents", function() {
+    this.route("edit", { path: "/:uuid" });
+    this.route("new");
+  });
 });
 
 export default Router;
