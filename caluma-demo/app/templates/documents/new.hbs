@@ -15,7 +15,7 @@
           </p>
         {{/card.body}}
         {{#card.footer}}
-          <button class="uk-button uk-button-primary" {{action "createDocument" form.node.id}}>{{t "forms.create" }}</button>
+          <button class="uk-button uk-button-primary" {{action "createDocument" form.node.slug}}>{{t "forms.create" }}</button>
         {{/card.footer}}
       {{/uk-card}}
     {{/each}}
