@@ -7,15 +7,16 @@ import { decodeId } from "ember-caluma/helpers/decode-id";
 export default class DocumentsNewRoute extends Route {
   @queryManager apollo;
 
-  async model() {
-    return await this.apollo.query(
+  model() {
+    return this.apollo.watchQuery(
       {
+        fetchPolicy: "cache-and-network",
         query: gql`
           query {
             allForms(isPublished: true) {
               edges {
                 node {
-                  id
+                  slug
                   name
                   description
                   isPublished
