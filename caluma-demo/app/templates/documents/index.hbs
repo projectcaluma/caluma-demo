@@ -25,13 +25,13 @@
     {{#each this.model as |document|}}
       <tbody>
         <tr>
-          <td class="uk-text-truncate">
+          <td class="uk-text-truncate uk-width-1-4">
             <LinkTo @route="documents.edit" @model={{decode-id document.node.id}}>{{document.node.form.name}}</LinkTo>
           </td>
-          <td class="uk-text-break uk-width-expand">
+          <td class="uk-text-truncate uk-width-2-4">
             <p>{{document.node.form.description}}</p>
           </td>
-          <td class="uk-text-nowrap">
+          <td class="uk-text-nowrap uk-width-1-4">
             <p>
               {{format-date document.node.form.createdAt timeZone="UTC"}},
               {{format-date document.node.form.createdAt hour="numeric" minute="numeric" second="numeric"}}

@@ -1,3 +1,6 @@
 {{#if model}}
   {{cf-content documentId=model}}
+  <LinkTo @route="documents" @tagName="button" class="uk-button uk-button-primary">
+    {{t "forms.cancel"}}
+  </LinkTo>
 {{/if}}
