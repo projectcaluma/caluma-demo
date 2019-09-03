@@ -4,13 +4,13 @@
       {{#uk-card  hover=true class="uk-width-medium uk-margin-left uk-margin-bottom uk-height-large" color="default" vertical="stretch" wrap="wrap" wrapAlignment="between" size="large" as |card|}}
         {{#card.header}}
           {{#card.title}}
-            <p class="uk-text-truncate">
+            <p class="uk-text-truncate" title={{form.node.name}}>
               {{form.node.name}}
             </p>
           {{/card.title}}
         {{/card.header}}
         {{#card.body}}
-          <p class="uk-text-truncate">
+          <p class="uk-text-truncate" title={{form.node.description}}>
             {{form.node.description}}
           </p>
         {{/card.body}}

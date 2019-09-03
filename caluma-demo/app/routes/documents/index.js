@@ -11,15 +11,15 @@ export default class DocumentsRoute extends Route {
         fetchPolicy: "cache-and-network",
         query: gql`
           query {
-            allDocuments {
+            allDocuments(orderBy: CREATED_AT_DESC) {
               edges {
                 node {
                   id
+                  createdAt
                   form {
                     slug
                     name
                     description
-                    createdAt
                   }
                 }
               }
