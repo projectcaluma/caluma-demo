@@ -1,23 +1,25 @@
 {{#if this.model}}
-  {{#uk-flex direction="row" horizontal="left" wrap="wrap"}}
+  <div uk-height-match="target: > div > .uk-card > .uk-card-body" class="uk-grid-small uk-child-width-1-4@s uk-text-center" uk-grid>
     {{#each this.model as |form|}}
-      {{#uk-card  hover=true class="uk-width-medium uk-margin-left uk-margin-bottom uk-height-large" color="default" vertical="stretch" wrap="wrap" wrapAlignment="between" size="large" as |card|}}
-        {{#card.header}}
-          {{#card.title}}
-            <p class="uk-text-truncate" title={{form.node.name}}>
-              {{form.node.name}}
+      <div>
+        {{#uk-card  hover=true color="default" as |card|}}
+          {{#card.header}}
+            {{#card.title}}
+              <p class="uk-text-truncate">
+                {{form.node.name}}
+              </p>
+            {{/card.title}}
+          {{/card.header}}
+          {{#card.body}}
+            <p class="uk-text-truncate">
+              {{form.node.description}}
             </p>
-          {{/card.title}}
-        {{/card.header}}
-        {{#card.body}}
-          <p class="uk-text-truncate" title={{form.node.description}}>
-            {{form.node.description}}
-          </p>
-        {{/card.body}}
-        {{#card.footer}}
-          <button class="uk-button uk-button-primary" {{action "createDocument" form.node.slug}}>{{t "forms.create" }}</button>
-        {{/card.footer}}
-      {{/uk-card}}
+          {{/card.body}}
+          {{#card.footer}}
+            <button class="uk-button uk-button-primary" {{action "createDocument" form.node.slug}}>{{t "forms.create" }}</button>
+          {{/card.footer}}
+        {{/uk-card}}
+      </div>
     {{/each}}
-  {{/uk-flex}}
+  </div>
 {{/if}}
