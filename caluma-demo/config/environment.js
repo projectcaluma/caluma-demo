@@ -1,11 +1,14 @@
 "use strict";
 
 module.exports = function(environment) {
-  let ENV = {
+  const ENV = {
     modulePrefix: "caluma-demo",
     environment,
     rootURL: "/",
     locationType: "auto",
+    apollo: {
+      apiURL: "/graphql/"
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -20,9 +23,6 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    },
-    apollo: {
-      apiURL: "/graphql"
     }
   };
 
