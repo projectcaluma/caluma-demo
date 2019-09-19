@@ -1,0 +1,176 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-credentials
+type: Opaque
+data:
+  POSTGRES_USER: <user>
+  POSTGRES_PASSWORD: <password>
+  POSTGRES_DB: Y2FsdW1h
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: postgres-pv-volume
+  labels:
+    type: local
+    app: postgres
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres-pv-claim
+  labels:
+    app: postgres
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:10.4
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: postgres-credentials
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  ports:
+   - port: 5432
+  selector:
+   app: postgres
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caluma
+  labels:
+    app: caluma-backend
+spec:
+  ports:
+   - port: 8000
+  selector:
+   app: caluma-backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caluma-backend
+  labels:
+    app: caluma-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caluma-backend
+  template:
+    metadata:
+      labels:
+        app: caluma-backend
+    spec:
+      containers:
+      - name: caluma-backend
+        image: projectcaluma/caluma:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_HOST
+          value: "postgres"
+        - name: DATABASE_PORT
+          value: "5432"
+        - name: DATABASE_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: POSTGRES_USER
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: POSTGRES_PASSWORD
+        - name: SECRET_KEY
+          value: "efohSh1eeche8queiv7phahkai3shuM7ein9poh8iJeC6aighuph6phaetoothee"
+        - name: ALLOWED_HOSTS
+          value: "*"
+        - name: VISIBILITY_CLASSES
+          value: "caluma.core.visibilities.Any"
+        - name: PERMISSION_CLASSES
+          value: "caluma.core.permissions.AllowAny"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caluma-demo
+  labels:
+    app: caluma-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caluma-demo
+  template:
+    metadata:
+      labels:
+        app: caluma-demo
+    spec:
+      containers:
+      - name: caluma-demo
+        image: projectcaluma/caluma-demo:manual-dev
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
+        - name: ENV
+          value: development
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caluma-frontend
+  labels:
+    app: caluma-demo
+spec:
+  type: LoadBalancer
+  ports:
+   - port: 80
+  selector:
+   app: caluma-demo
