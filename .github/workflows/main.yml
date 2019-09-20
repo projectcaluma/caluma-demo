@@ -1,21 +1,14 @@
-name: CI
-
+name: Publish Docker
 on:
   push:
     branches:
       - stable
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
     steps:
     - name: checkout stable branch
       uses: actions/checkout@stable
-    - name: build container
-      uses: "actions/docker/cli@master"
-      args: "build -t caluma-demo ./caluma-demo"
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
