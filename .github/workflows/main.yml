@@ -1,8 +1,5 @@
 name: Publish Docker
-on:
-  push:
-    branches:
-      - stable
+on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,3 +10,4 @@ jobs:
         name: projectcaluma/caluma-demo
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: caluma-demo/Dockerfile
