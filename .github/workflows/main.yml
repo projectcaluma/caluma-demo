@@ -7,8 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout stable branch
-      uses: actions/checkout@stable
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
