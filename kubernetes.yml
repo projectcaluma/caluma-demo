@@ -154,7 +154,7 @@ spec:
     spec:
       containers:
       - name: caluma-demo
-        image: projectcaluma/caluma-demo:manual-dev
+        image: projectcaluma/caluma-demo:stable
         imagePullPolicy: Always
         ports:
         - containerPort: 80
