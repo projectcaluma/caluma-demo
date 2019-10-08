@@ -174,3 +174,26 @@ spec:
    - port: 80
   selector:
    app: caluma-demo
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: demo-caluma-io
+  labels:
+    app: caluma-demo
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+  - host: demo.caluma.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: caluma-frontend
+          servicePort: 80
+  tls:
+  - hosts:
+      - demo.caluma.io
+    secretName: demo-caluma-io-cert
