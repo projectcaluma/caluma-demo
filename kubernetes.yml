@@ -169,7 +169,6 @@ metadata:
   labels:
     app: caluma-demo
 spec:
-  type: LoadBalancer
   ports:
    - port: 80
   selector:
