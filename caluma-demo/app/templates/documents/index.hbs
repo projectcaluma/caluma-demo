@@ -1,3 +1,28 @@
+{{#unless this.model}}
+  <p class="uk-text-center">{{t "documents.not-found"}}</p>
+  <table class="uk-table uk-table-hover">
+    <thead>
+      <tr>
+        <th>
+          {{t "documents.form" }}
+        </th>
+        <th>
+          {{t "documents.description" }}
+        </th>
+        <th>
+          {{t "documents.state" }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="uk-text-truncate uk-width-1-4"></td>
+        <td class="uk-width-2-4"></td>
+        <td class="uk-text-nowrap uk-width-1-4"></td>
+      </tr>
+    </tbody>
+  </table>
+{{/unless}}
 {{#link-to "documents.new"}}
   {{#uk-button
     color="primary"

@@ -11,8 +11,14 @@ forms:
   new: Fill in new form
   create: Create new
   cancel: Cancel
+  edit: Do you really want to delete this form?
+  not-found: We did not find any forms. Go to the <LinkTo @route="form-builder">form-builder</LinkTo> section to create a new document right now!
 documents:
   form: Form
   description: Description
   state: State
   delete: Delete
+  not-found: We did not find any documents. Click the button beneath to create a new document right now!
+general:
+  yes: Yes
+  no: No
