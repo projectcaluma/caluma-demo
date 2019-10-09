@@ -1,7 +1,3 @@
-{{#unless this.model}}
-  <p class="uk-text-center">{{t "forms.not-found"}}</p>
-{{/unless}}
-
 {{#if this.model}}
   <div uk-height-match="target: > div > .uk-card > .uk-card-body" class="uk-grid-small uk-child-width-1-4@s uk-text-center" uk-grid>
     {{#each this.model as |form|}}
@@ -9,15 +5,15 @@
         {{#uk-card  hover=true color="default" as |card|}}
           {{#card.header}}
             {{#card.title}}
-              <p class="uk-text-truncate" title={{form.node.name}}>
+              <div class="uk-text-truncate" title={{form.node.name}}>
                 {{form.node.name}}
-              </p>
+              </div>
             {{/card.title}}
           {{/card.header}}
           {{#card.body}}
-            <p class="uk-text-left" title={{form.node.description}}>
-              {{trim-description form.node.description 170}}
-            </p>
+            <div class="uk-text-left" title={{form.node.description}}>
+              {{trim-description form.node.description 150}}
+            </div>
           {{/card.body}}
           {{#card.footer}}
             <button class="uk-button uk-button-primary" {{action "createDocument" form.node.slug}}>{{t "forms.create" }}</button>
@@ -25,5 +21,9 @@
         {{/uk-card}}
       </div>
     {{/each}}
+  </div>
+{{else}}
+  <div class="uk-text-center">
+    {{t "forms.not-found"}}
   </div>
 {{/if}}

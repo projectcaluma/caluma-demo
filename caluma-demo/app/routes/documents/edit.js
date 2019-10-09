@@ -10,9 +10,8 @@ export default class DocumentsEditRoute extends Route {
     return params.uuid;
   }
 
-  setupController(controller, model) {
-    this._super(controller, model);
-    controller.set("model", model);
+  setupController(controller) {
+    super.setupController(...arguments);
     controller.set("showModal", false);
   }
 

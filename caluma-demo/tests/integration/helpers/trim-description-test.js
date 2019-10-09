@@ -3,15 +3,14 @@ import { setupRenderingTest } from "ember-qunit";
 import { render } from "@ember/test-helpers";
 import hbs from "htmlbars-inline-precompile";
 
-module("Integration | Helper | trim-string", function(hooks) {
+module("Integration | Helper | trim-description", function(hooks) {
   setupRenderingTest(hooks);
 
-  // Replace this with your real tests.
-  test("it renders", async function(assert) {
-    this.set("inputValue", "1234");
+  test("it works", async function(assert) {
+    this.set("inputValue", "This is a test");
 
-    await render(hbs`{{trim-string inputValue}}`);
+    await render(hbs`{{trim-description inputValue 11}}`);
 
-    assert.equal(this.element.textContent.trim(), "1234");
+    assert.equal(this.element.textContent.trim(), "This is a ...");
   });
 });

@@ -1,28 +1,3 @@
-{{#unless this.model}}
-  <p class="uk-text-center">{{t "documents.not-found"}}</p>
-  <table class="uk-table uk-table-hover">
-    <thead>
-      <tr>
-        <th>
-          {{t "documents.form" }}
-        </th>
-        <th>
-          {{t "documents.description" }}
-        </th>
-        <th>
-          {{t "documents.state" }}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="uk-text-truncate uk-width-1-4"></td>
-        <td class="uk-width-2-4"></td>
-        <td class="uk-text-nowrap uk-width-1-4"></td>
-      </tr>
-    </tbody>
-  </table>
-{{/unless}}
 {{#link-to "documents.new"}}
   {{#uk-button
     color="primary"
@@ -32,38 +7,42 @@
     {{t "forms.new"}}
   {{/uk-button}}
 {{/link-to}}
-{{#if this.model}}
-  <table class="uk-table uk-table-hover">
-    <thead>
+<table class="uk-table uk-table-hover">
+  <thead>
+    <tr>
+      <th>
+        {{t "documents.form" }}
+      </th>
+      <th>
+        {{t "documents.description" }}
+      </th>
+      <th>
+        {{t "documents.state" }}
+      </th>
+    </tr>
+  </thead>
+  {{#each this.model as |document|}}
+    <tbody>
       <tr>
-        <th>
-          {{t "documents.form" }}
-        </th>
-        <th>
-          {{t "documents.description" }}
-        </th>
-        <th>
-          {{t "documents.state" }}
-        </th>
+        <td class="uk-text-truncate uk-width-1-4">
+          <LinkTo @route="documents.edit" @model={{decode-id document.node.id}} title={{document.node.form.name}}>{{document.node.form.name}}</LinkTo>
+        </td>
+        <td class="uk-width-2-4" title={{document.node.form.description}}>
+          {{trim-description document.node.form.description 150}}
+        </td>
+        <td class="uk-text-nowrap uk-width-1-4">
+          {{format-date document.node.createdAt timeZone="UTC"}},
+          {{format-date document.node.createdAt hour="numeric" minute="numeric" second="numeric"}}
+        </td>
       </tr>
-    </thead>
-    {{#each this.model as |document|}}
-      <tbody>
-        <tr>
-          <td class="uk-text-truncate uk-width-1-4">
-            <LinkTo @route="documents.edit" @model={{decode-id document.node.id}} title={{document.node.form.name}}>{{document.node.form.name}}</LinkTo>
-          </td>
-          <td class="uk-width-2-4">
-            <p title={{document.node.form.description}}>{{trim-description document.node.form.description 150}}</p>
-          </td>
-          <td class="uk-text-nowrap uk-width-1-4">
-            <p>
-              {{format-date document.node.createdAt timeZone="UTC"}},
-              {{format-date document.node.createdAt hour="numeric" minute="numeric" second="numeric"}}
-            </p>
-          </td>
-        </tr>
-      </tbody>
-    {{/each}}
-  </table>
-{{/if}}
+    </tbody>
+  {{else}}
+    <tbody>
+      <tr>
+        <td>
+          {{t "documents.not-found"}}
+        </td>
+      </tr>
+    </tbody>
+  {{/each}}
+</table>
