@@ -9,14 +9,14 @@
         {{#uk-card  hover=true color="default" as |card|}}
           {{#card.header}}
             {{#card.title}}
-              <p class="uk-text-truncate">
+              <p class="uk-text-truncate" title={{form.node.name}}>
                 {{form.node.name}}
               </p>
             {{/card.title}}
           {{/card.header}}
           {{#card.body}}
-            <p class="uk-text-truncate">
-              {{form.node.description}}
+            <p class="uk-text-left" title={{form.node.description}}>
+              {{trim-description form.node.description 170}}
             </p>
           {{/card.body}}
           {{#card.footer}}

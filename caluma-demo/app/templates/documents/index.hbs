@@ -51,10 +51,10 @@
       <tbody>
         <tr>
           <td class="uk-text-truncate uk-width-1-4">
-            <LinkTo @route="documents.edit" @model={{decode-id document.node.id}}>{{document.node.form.name}}</LinkTo>
+            <LinkTo @route="documents.edit" @model={{decode-id document.node.id}} title={{document.node.form.name}}>{{document.node.form.name}}</LinkTo>
           </td>
-          <td class="uk-text-truncate uk-width-2-4">
-            <p>{{document.node.form.description}}</p>
+          <td class="uk-width-2-4">
+            <p title={{document.node.form.description}}>{{trim-description document.node.form.description 150}}</p>
           </td>
           <td class="uk-text-nowrap uk-width-1-4">
             <p>
