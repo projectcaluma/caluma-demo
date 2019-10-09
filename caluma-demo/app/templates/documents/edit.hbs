@@ -1,4 +1,18 @@
 {{#if model}}
   {{cf-content documentId=model}}
-  <button class="uk-button uk-button-primary" {{action "deleteDocument" model}}>{{t "documents.delete" }}</button>
+  <p class="uk-text-right">
+    <button class="uk-button uk-button-danger uk-margin-xlarge-top" {{action (mut showModal) true}}>{{t "documents.delete" }}</button>
+  </p>
+
+  {{#uk-modal
+      visible=showModal
+      btnClose=true
+      escClose=true
+      bgClose=true
+      on-hide=(action (mut showModal) false)
+  }}
+    <p>{{ t "forms.edit"}}</p>
+    <button class="uk-button uk-button-primary" {{action (mut showModal) false}}>{{t "general.no"}}</button>
+    <button class="uk-button uk-button-danger" {{action "deleteDocument" model}}>{{t "general.yes"}}</button>
+  {{/uk-modal}}
 {{/if}}

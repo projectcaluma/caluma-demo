@@ -10,6 +10,12 @@ export default class DocumentsEditRoute extends Route {
     return params.uuid;
   }
 
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set("model", model);
+    controller.set("showModal", false);
+  }
+
   @action
   async deleteDocument(document) {
     await this.apollo.mutate({
