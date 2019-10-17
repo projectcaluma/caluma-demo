@@ -13,7 +13,7 @@ export default class DocumentsNewRoute extends Route {
         fetchPolicy: "cache-and-network",
         query: gql`
           query {
-            allForms(isPublished: true) {
+            allForms(isPublished: true, orderBy: CREATED_AT_DESC) {
               edges {
                 node {
                   slug
