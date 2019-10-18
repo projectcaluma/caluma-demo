@@ -1,0 +1,28 @@
+nav:
+  home: Home
+  form-builder: Form-Builder
+  show-forms: Formulaires d'affichage
+  icon: Caluma logo
+  language: Langue
+  de: Allemand 
+  en: Anglais
+  fr: Français 
+home:
+  welcome: Bienvenue à la démonstration Caluma
+  introduction: Sur cette page vous pouvez essayer Caluma. Les formulaires peuvent être créés, remplis et visualisés directement.
+  logo: Caluma logo
+forms:
+  new: Remplir un nouveau formulaire 
+  create: Créer un nouveau
+  cancel: Avorter
+  edit: Êtes-vous sûr de vouloir supprimer ce formulaire?
+  not-found: Nous n'avons trouvé aucun formulaire. Allez dans la section Form Builder pour créer immédiatement un nouveau formulaire!
+documents:
+  form: Formulaire
+  description: Description
+  state: Situation
+  delete: Supprimer
+  not-found: Nous n'avons trouvé aucun document. Cliquez sur le bouton ci-dessus pour créer immédiatement un nouveau document!
+general:
+  yes: Oui
+  no: Non
