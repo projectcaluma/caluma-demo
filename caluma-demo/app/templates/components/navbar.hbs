@@ -5,6 +5,22 @@
       <li><LinkTo @route="index">{{t "nav.home" }}</LinkTo></li>
       <li><LinkTo @route="form-builder">{{t "nav.form-builder" }}</LinkTo></li>
       <li><LinkTo @route="documents">{{t "nav.show-forms" }}</LinkTo></li>
+      <li>
+        <a href="#">
+          {{t "nav.language"}} 
+        </a>
+        <div uk-dropdown>
+          <ul class="uk-nav">
+            {{#each languages as |language|}}
+              <li class={{if (eq language intl.primaryLocale) "uk-active"}}>
+                <a href="#" class="uk-link-muted" {{action "setLanguage" language}}>
+                  {{t (concat "nav." language)}}
+                </a>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

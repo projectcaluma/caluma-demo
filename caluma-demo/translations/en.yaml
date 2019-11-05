@@ -3,6 +3,10 @@ nav:
   form-builder: Form-Builder
   show-forms: Show forms
   icon: Caluma icon
+  language: Language
+  de: German
+  en: English
+  fr: French
 home:
   welcome: Welcome to the Caluma-Demo
   introduction: On this page you can try Caluma. You can create forms, fill them out and view them directly.
