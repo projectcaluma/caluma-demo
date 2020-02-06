@@ -132,9 +132,9 @@ spec:
         - name: ALLOWED_HOSTS
           value: "*"
         - name: VISIBILITY_CLASSES
-          value: "caluma.core.visibilities.Any"
+          value: "caluma.caluma_core.visibilities.Any"
         - name: PERMISSION_CLASSES
-          value: "caluma.core.permissions.AllowAny"
+          value: "caluma.caluma_core.permissions.AllowAny"
 ---
 apiVersion: apps/v1
 kind: Deployment
