@@ -9,8 +9,8 @@ data:
   POSTGRES_PASSWORD: <password>
   POSTGRES_DB: Y2FsdW1h
 ---
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
   name: postgres-pv-volume
   labels:
@@ -25,8 +25,8 @@ spec:
   hostPath:
     path: "/mnt/data"
 ---
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: postgres-pv-claim
   labels:
