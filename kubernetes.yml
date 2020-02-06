@@ -132,9 +132,9 @@ spec:
         - name: ALLOWED_HOSTS
           value: "*"
         - name: VISIBILITY_CLASSES
-          value: "caluma.core.visibilities.Any"
+          value: "caluma.caluma_core.visibilities.Any"
         - name: PERMISSION_CLASSES
-          value: "caluma.core.permissions.AllowAny"
+          value: "caluma.caluma_core.permissions.AllowAny"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -174,7 +174,7 @@ spec:
   selector:
    app: caluma-demo
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: demo-caluma-io
