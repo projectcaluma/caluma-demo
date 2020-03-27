@@ -14,6 +14,8 @@ services:
       - db
     environment:
       - DATABASE_HOST=db
+    expose:
+      - 8000
 
   frontend:
     build:
@@ -22,6 +24,8 @@ services:
       - caluma
     environment:
       - ENV=development
+      - BACKEND_HOST=caluma
+      - BACKEND_PORT=8000
     ports:
       - "80:80"
 
