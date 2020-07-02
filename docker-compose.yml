@@ -24,8 +24,6 @@ services:
       - caluma
     environment:
       - ENV=development
-      - BACKEND_HOST=caluma
-      - BACKEND_PORT=8000
     ports:
       - "80:80"
 

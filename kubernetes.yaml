@@ -161,10 +161,6 @@ spec:
         env:
         - name: ENV
           value: development
-        - name: BACKEND_HOST
-          value: caluma
-        - name: BACKEND_PORT
-          value: 8000
 ---
 apiVersion: v1
 kind: Service
